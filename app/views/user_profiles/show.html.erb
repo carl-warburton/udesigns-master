@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+<%= link_to 'Back to home', user_profiles_path %>
+
+
+
+<div class= "row">
+
+    <div class="card col l6  m8 s12 offset-s6 offset-m2 offset-l3">
+      <div class="">
+        <p><%=@user_profile.name%></p>
+        <p><%=@user_profile.hometown%></p>
+
+        <div class="card-image">
+          <div class ="image-style">
+            <% @user_profile.images.each do |image| %>
+            <br>
+            <br>
+            <br>
+            <br>
+            <%= image_tag  image.url, :size => "50x350" %>
+          </div>
+        </div>
+
+        <div class="card-content">
+          <p><%= @user_profile.instagram %></p>
+          <p><%= @user_profile.portfolio %></p>
+
+
+        <div class="card-action">
+            <%= link_to "Edit", edit_user_profile_path(@user_profile) if current_user  %>
+
+            <%= link_to "Delete", user_profile_path(@user_profile), method: :delete if current_user.role == 2%>
+
+            <%= link_to "Buy", new_charge_path %>
+
+            <%= link_to 'Message Designer', conversations_path %>
+
+
+
+        </div>
+        </div>
+        <% end %>
+
+      </div>
+      </div>
+    </div>
+
+    </div>

@@ -1,0 +1,87 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "materialize/components/color";
+$primary-color: color("grey", "darken-1") !default;
+@import 'materialize';
+@import "font-awesome";
+
+
+.cover-image {
+  background-size: cover;
+  height:410px;
+  width:100%;
+}
+
+.indexcover {
+  width:100%;
+}
+
+.card-image {
+
+
+  }
+.image-style{
+  background-image: url('https://ae01.alicdn.com/kf/HTB1GzAPJFXXXXcfXpXXq6xXFXXXv/High-Quality-Stretch-Short-sleeved-White-font-b-T-b-font-font-b-shirt-b-font.jpg');
+  background-repeat: no-repeat;
+  background-position:center;
+  height:700px;
+}
+
+
+
+nav {
+    height: 30px;
+    line-height: 30px;
+    font-size: 3px;
+}
+
+nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
+    height: 30px;
+    line-height: 30px;
+}
+
+nav .button-collapse i {
+    height: 30px;
+    line-height: 30px;
+}
+
+nav .brand-logo {
+    font-size: 1.6rem;
+}
+
+@media only screen and (min-width: 601px){
+    nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
+        height: 30px;
+        line-height: 30px;
+    }
+}
+
+.row{
+  margin-bottom: 0;
+}
+
+.textlogo {
+  margin-top: 10px;
+}
+
+.socialnav{
+
+}
+
+#boxy{
+  background: url( asset-path('blankt.png') ) no-repeat;
+  background-size: 100% 100%;
+}

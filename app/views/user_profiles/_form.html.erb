@@ -1,0 +1,57 @@
+<div class="row">
+  <div class ="col s12 m10 offset-m1 l8 offset-l2">
+
+<%= form_for(user_profile) do |f| %>
+  <% if user_profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user_profile.errors.count, "error") %> prohibited this user_profile from being saved:</h2>
+
+      <ul>
+      <% user_profile.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :age %>
+    <%= f.number_field :age %>
+  </div>
+
+  <div class="field">
+    <%= f.label :hometown %>
+    <%= f.text_field :hometown %>
+  </div>
+
+  <div class="field">
+    <%= f.label :instagram %>
+    <%= f.url_field :instagram %>
+  </div>
+
+  <div class="field">
+    <%= f.label :portfolio %>
+    <%= f.url_field :portfolio %>
+  </div>
+
+  <div class="field">
+    <%= f.label :upload_square_transparent_design %>
+    <%= f.file_field :images, multiple: true %>
+  </div>
+
+<br>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+
+
+<% end %>
+
+</end>
+</end>

@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="cover-image">
+      <img class="indexcover" src="<%= asset_path 'Optimizedwaverocks.png' %>" alt="Unlabelled Designs Wave">
+  </div>
+</div>
+
+
+
+
+
+<p><%= link_to 'Sell Your Designs', new_user_profile_path %></p>
+
+<% @user_profiles.each do |user_profile| %>
+<div class= "row">
+
+    <div class="card col l6 m8 s12 offset-s6 offset-m2 offset-l3">
+        <p><%=user_profile.name%></p>
+        <p><%=user_profile.hometown%></p>
+        <p><%= user_profile.age %></p>
+
+
+      <div class="card-image">
+        <div class ="image-style">
+          <% user_profile.images.each do |image| %>
+          <br>
+          <br>
+          <br>
+          <br>
+          <%= image_tag  image.url, :size => "50x350" %>
+        </div>
+      </div>
+        <div class="card-content">
+          <p><em>Instagram:</em><br><%= user_profile.instagram %></p>
+          <p><em>Portfolio:</em><br><%= user_profile.portfolio %></p>
+
+          <div class="card-action">
+            <p>
+                <%= link_to 'View', user_profile_path(user_profile)%>
+                <% if user_profile.user == current_user %>
+                  <%= link_to "Edit", edit_user_profile_path(user_profile) %>
+
+                  <%= link_to "Delete", user_profile_path(user_profile), method: :delete %>
+                <% end %>
+            <% end %>
+
+        </div>
+      </div>
+      </div>
+    </div>
+
+    </div>
+<% end %>

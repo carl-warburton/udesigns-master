@@ -1,0 +1,50 @@
+<nav>
+  <div class="row">
+    <div class ="col s12 m10 offset-m1 l10 offset-l1">
+    <div class="nav-wrapper">
+        <a href="#" class="brand-logo center"><font size="2">Free Shipping Orders Over $50</font></a>
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+          <li><%= link_to('Buy', 'user_profiles#index') %></li>
+          <li><%= link_to('Sell', new_user_profile_url) %></li>
+          <li><%= link_to 'Messages', conversations_path %></li>
+
+        </ul>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <% if user_signed_in? %>
+            <li>
+            <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+            </li>
+          <% else %>
+            <li>
+            <%= link_to('Login', new_user_session_path)  %>
+            </li>
+          <% end %>
+          <% if user_signed_in? %>
+            <li>
+            <%= link_to('Edit User', edit_user_registration_path) %>
+            </li>
+          <% else %>
+            <li>
+            <%= link_to('Sign Up', new_user_registration_path)  %>
+            </li>
+          <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+</nav>
+
+<div class="center-align">
+  <div class="row">
+    <img class="textlogo" src="<%= asset_path 'text_logo.jpg' %>" alt="Unlabelled Designs Logo" style="width:80px; height:40px;">
+    </img>
+  </div>
+
+  <div class="row">
+    <div class="socialnav">
+      <a href="https://www.facebook.com/unlabelleddesigns/?fref=ts"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+      <a href="https://www.facebook.com/unlabelleddesigns/?fref=ts"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+      <a href="https://www.facebook.com/unlabelleddesigns/?fref=ts"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    </div>
+  </div>
+</div>
