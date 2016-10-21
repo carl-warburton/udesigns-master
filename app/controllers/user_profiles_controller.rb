@@ -5,8 +5,11 @@ class UserProfilesController < ApplicationController
   # GET /user_profiles
   # GET /user_profiles.json
   def index
-    @user_profiles = UserProfile.all
-
+    if params[:search]
+      @user_profiles = UserProfile.search(params[:search]).order("created_at DESC")
+    else
+      @user_profiles = UserProfile.all.order('created_at DESC')
+    end
   end
 
   # GET /user_profiles/1

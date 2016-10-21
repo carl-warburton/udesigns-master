@@ -85,3 +85,11 @@ nav .brand-logo {
   background: url( asset-path('blankt.png') ) no-repeat;
   background-size: 100% 100%;
 }
+
+/* design picture styling */
+div.card-image img.design {
+  position:absolute;
+  width: 50%;
+  top:10%;
+  left:25%;
+}

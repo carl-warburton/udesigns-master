@@ -1,8 +1,6 @@
 <p id="notice"><%= notice %></p>
 <%= link_to 'Back to home', user_profiles_path %>
 
-
-
 <div class= "row">
 
     <div class="card col l6  m8 s12 offset-s6 offset-m2 offset-l3">
@@ -17,23 +15,24 @@
             <br>
             <br>
             <br>
-            <%= image_tag  image.url, :size => "50x350" %>
+            <%= image_tag(image.url, class:"design") %>
+
           </div>
         </div>
 
         <div class="card-content">
-          <p><%= @user_profile.instagram %></p>
-          <p><%= @user_profile.portfolio %></p>
+          <p><a href="<%= @user_profile.instagram %>"><i class="fa fa-instagram" aria-hidden="true"></i></a><p>
+          <p><a href="<%= @user_profile.portfolio %>"><i class="fa fa-desktop" aria-hidden="true"></i></a><p>
+
 
 
         <div class="card-action">
-            <%= link_to "Edit", edit_user_profile_path(@user_profile) if current_user  %>
-
-            <%= link_to "Delete", user_profile_path(@user_profile), method: :delete if current_user.role == 2%>
-
-            <%= link_to "Buy", new_charge_path %>
-
-            <%= link_to 'Message Designer', conversations_path %>
+          <% if @user_profile.user == current_user %>
+          <p><%= link_to "Edit", edit_user_profile_path(@user_profile) %></p>
+          <p><%= link_to "Delete", user_profile_path(@user_profile), method: :delete%></p>
+          <% end %>
+          <p><%= button_to 'Add to Cart', line_items_path(user_profile_id: @user_profile) %></p>
+          <p><%= link_to 'Message Designer', conversations_path %></p>
 
 
 

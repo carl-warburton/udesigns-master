@@ -6,49 +6,53 @@
   </div>
 </div>
 
+<div class ="row">
+  <div class="col l6 m8 s12 offset-s6 offset-m2 offset-l3">
 
+    <p><%= link_to 'Sell Your Designs', new_user_profile_path %></p>
 
+    <%= form_tag(user_profiles_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Designers" %>
+    <%= submit_tag "Search" %>
+    <% end %>
 
+    <% if !@user_profiles.present? %>
+      <p>There are no designers that match your search <%= params[:search] %>.</p>
+    <% end %>
+  </div>
+</div>
 
-<p><%= link_to 'Sell Your Designs', new_user_profile_path %></p>
+<br>
+<br>
+<br>
 
 <% @user_profiles.each do |user_profile| %>
-<div class= "row">
+  <div class= "row">
+  <div class="card col l6 m8 s12 offset-s6 offset-m2 offset-l3">
+    <p><%=user_profile.name%></p>
+    <p><%=user_profile.hometown%></p>
+    <p><%=user_profile.age %></p>
 
-    <div class="card col l6 m8 s12 offset-s6 offset-m2 offset-l3">
-        <p><%=user_profile.name%></p>
-        <p><%=user_profile.hometown%></p>
-        <p><%= user_profile.age %></p>
-
-
-      <div class="card-image">
-        <div class ="image-style">
-          <% user_profile.images.each do |image| %>
-          <br>
-          <br>
-          <br>
-          <br>
-          <%= image_tag  image.url, :size => "50x350" %>
-        </div>
-      </div>
-        <div class="card-content">
-          <p><em>Instagram:</em><br><%= user_profile.instagram %></p>
-          <p><em>Portfolio:</em><br><%= user_profile.portfolio %></p>
-
-          <div class="card-action">
-            <p>
-                <%= link_to 'View', user_profile_path(user_profile)%>
-                <% if user_profile.user == current_user %>
-                  <%= link_to "Edit", edit_user_profile_path(user_profile) %>
-
-                  <%= link_to "Delete", user_profile_path(user_profile), method: :delete %>
-                <% end %>
-            <% end %>
-
-        </div>
-      </div>
+    <div class="card-image">
+      <div class ="image-style">
+        <% user_profile.images.each do |image| %>
+          <%= image_tag(image.url, class:"design") %>
+        <% end %>
       </div>
     </div>
-
+      <div class="card-content">
+        <p><em>Instagram:   </em><a href="<%= user_profile.instagram %>"><i class="fa fa-instagram" aria-hidden="true"></i></a><p>
+        <p><em>Portfolio:   </em><a href="<%= user_profile.portfolio %>"><i class="fa fa-desktop" aria-hidden="true"></i></a><p>
+      </div>
+      <!-- <div class="card-action"> -->
+        <p>
+          <%= link_to 'View', user_profile_path(user_profile)%>
+          <% if user_profile.user == current_user %>
+            <%= link_to "Edit", edit_user_profile_path(user_profile) %>
+            <%= link_to "Delete", user_profile_path(user_profile), method: :delete %>
+          <% end %>
+        </p>
+      </div>
     </div>
+  </div>
 <% end %>

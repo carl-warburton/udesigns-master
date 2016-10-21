@@ -1,4 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_cart_path(@cart) %> |
-<%= link_to 'Back', carts_path %>
+<div class= "row">
+  <div class="col l6  m8 s12 offset-s6 offset-m2 offset-l3">
+
+    <h2>Your Pragmatic Cart</h2>
+    <ul>
+      <% @cart.line_items.each do |item| %>
+
+        <li><%= item.quantity %> &times;  <%= image_tag (item.user_profile.images.first.url) %></li>
+
+    <% end %>
+
+    </ul>
+    <%= link_to "Checkout", new_charge_path(cart: @cart) %> |
+
+
+    <%= link_to 'Edit Cart', edit_cart_path(@cart) %> |
+    <%= link_to 'Home', user_profiles_path %>
+
+  </div>
+</div>
